@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const connectDB = require('./config/db');
 
 // Connect to Database
@@ -25,15 +26,29 @@ app.use('/api/projects', require('./routes/projectRoutes'));
 app.use('/api/testimonials', require('./routes/testimonialRoutes'));
 app.use('/api/inquiries', require('./routes/inquiryRoutes'));
 
-// Health check endpoint
-app.get('/', (req, res) => {
-  res.json({ status: 'healthy', message: 'SoundFolio API is running' });
-});
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
 
-// 404 Route handler
-app.use((req, res, next) => {
-  res.status(404).json({ success: false, message: 'Resource not found' });
-});
+  // For any non-API routes, serve client build index.html
+  app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api/')) {
+      res.sendFile(path.resolve(__dirname, '../', 'client', 'dist', 'index.html'));
+    } else {
+      res.status(404).json({ success: false, message: 'API endpoint not found' });
+    }
+  });
+} else {
+  // Health check endpoint
+  app.get('/', (req, res) => {
+    res.json({ status: 'healthy', message: 'SoundFolio API is running' });
+  });
+
+  // 404 Route handler for dev
+  app.use((req, res, next) => {
+    res.status(404).json({ success: false, message: 'Resource not found' });
+  });
+}
 
 // Central Error Handler middleware
 app.use((err, req, res, next) => {
