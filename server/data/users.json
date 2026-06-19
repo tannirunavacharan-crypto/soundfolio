@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "17818444439020zid",
+    "name": "Ak Bhuker",
+    "email": "admin@soundfolio.com",
+    "password": "$2a$10$kOI0qDdrhU5S3CbjIqhv8O4uBpXTT7rFQmTzqs6c/P7DaU9yxJQpi",
+    "role": "admin",
+    "createdAt": "2026-06-19T04:47:23.902Z",
+    "updatedAt": "2026-06-19T04:47:23.903Z"
+  }
+]

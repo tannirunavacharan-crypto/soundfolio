@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "17818444439483yec",
+    "title": "Film Scoring & Cinematic Composition",
+    "description": "Custom musical scores tailormade to support your visual narratives. From full-scale orchestral arrangements to minimalist electronic underscores, designed to evoke the exact emotion for your movie or documentary.",
+    "turnaroundTime": "2 to 4 weeks depending on film duration",
+    "createdAt": "2026-06-19T04:47:23.948Z",
+    "updatedAt": "2026-06-19T04:47:23.948Z"
+  },
+  {
+    "_id": "1781844443963xh6p",
+    "title": "Brand Jingles & Sonic Logos",
+    "description": "Capture the identity of your brand in a short, memorable audio signature. Catchy hooks, custom sound elements, and memorable arrangements for television, radio, and social media campaigns.",
+    "turnaroundTime": "5 to 7 business days",
+    "createdAt": "2026-06-19T04:47:23.963Z",
+    "updatedAt": "2026-06-19T04:47:23.963Z"
+  },
+  {
+    "_id": "1781844443983v324",
+    "title": "Song Arrangement & Instrumentation",
+    "description": "Transform your vocal sketches or basic demo chords into a fully arranged, radio-ready masterpiece. We write and record the drums, bass, guitars, keyboards, and orchestral parts to support your melody.",
+    "turnaroundTime": "7 to 10 business days",
+    "createdAt": "2026-06-19T04:47:23.983Z",
+    "updatedAt": "2026-06-19T04:47:23.983Z"
+  },
+  {
+    "_id": "17818444439971g4c",
+    "title": "Professional Audio Mixing & Mastering",
+    "description": "Give your music the clarity, depth, and competitive loudness it deserves. Using state-of-the-art processors and a treated monitoring space, we ensure your tracks sound stellar on all playback devices.",
+    "turnaroundTime": "3 to 5 business days",
+    "createdAt": "2026-06-19T04:47:23.997Z",
+    "updatedAt": "2026-06-19T04:47:23.997Z"
+  },
+  {
+    "_id": "1781844444008z0mo",
+    "title": "Full-Scale Music Production",
+    "description": "End-to-end music production for artists and bands. From concept development, recording coordination, session management, and vocal arrangement to the final mixed master.",
+    "turnaroundTime": "Flexible (project-dependent)",
+    "createdAt": "2026-06-19T04:47:24.008Z",
+    "updatedAt": "2026-06-19T04:47:24.008Z"
+  }
+]

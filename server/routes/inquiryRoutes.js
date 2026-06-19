@@ -1,0 +1,13 @@
+const express = require('express');
+const router = express.Router();
+const { createInquiry, getInquiries, deleteInquiry } = require('../controllers/inquiryController');
+const { protect } = require('../middleware/authMiddleware');
+
+router.route('/')
+  .post(createInquiry)
+  .get(protect, getInquiries);
+
+router.route('/:id')
+  .delete(protect, deleteInquiry);
+
+module.exports = router;

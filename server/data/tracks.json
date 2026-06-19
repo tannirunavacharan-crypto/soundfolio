@@ -1,0 +1,62 @@
+[
+  {
+    "_id": "1781844443915z7dp",
+    "title": "Echoes of the Cinematic Horizon",
+    "genre": "Orchestral / Film Score",
+    "category": "Film",
+    "description": "An epic, swelling orchestral track designed for science fiction and adventure film trailer openings. Features driving strings and synth textures.",
+    "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    "imageUrl": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=400",
+    "duration": "6:12",
+    "createdAt": "2026-06-19T04:47:23.916Z",
+    "updatedAt": "2026-06-19T04:47:23.916Z"
+  },
+  {
+    "_id": "1781844443916lkxi",
+    "title": "The Golden Spark Jingle",
+    "genre": "Modern Corporate / Indie Pop",
+    "category": "Jingle",
+    "description": "Upbeat, catchy 30-second jingle for commercial advertising. High-energy acoustic guitar, handclaps, and whistling accents.",
+    "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+    "imageUrl": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=400",
+    "duration": "7:05",
+    "createdAt": "2026-06-19T04:47:23.916Z",
+    "updatedAt": "2026-06-19T04:47:23.916Z"
+  },
+  {
+    "_id": "17818444439309fuj",
+    "title": "Midnight Jazz Arrangement",
+    "genre": "Smooth Jazz / Neo-Soul",
+    "category": "Arrangement",
+    "description": "An elegant arrangement of a classical piece rewritten for a jazz quartet. Features smooth saxophone leads, fender rhodes piano, and a double bass groove.",
+    "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+    "imageUrl": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=400",
+    "duration": "5:44",
+    "createdAt": "2026-06-19T04:47:23.930Z",
+    "updatedAt": "2026-06-19T04:47:23.930Z"
+  },
+  {
+    "_id": "1781844443931v5ux",
+    "title": "Tension in the Shadows",
+    "genre": "Dark Ambient / Thriller",
+    "category": "Background Score",
+    "description": "A suspenseful, slow-burning background score ideal for documentary or film noir crime scenes. Sub-heavy bass and repeating ticking sounds.",
+    "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
+    "imageUrl": "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=400",
+    "duration": "5:02",
+    "createdAt": "2026-06-19T04:47:23.931Z",
+    "updatedAt": "2026-06-19T04:47:23.931Z"
+  },
+  {
+    "_id": "1781844443946sc55",
+    "title": "Summer Fuel commercial theme",
+    "genre": "Electronic Dance Music",
+    "category": "Commercial",
+    "description": "A high-energy, pumping electronic track perfect for automotive, sports energy, or youth-focused marketing campaigns.",
+    "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3",
+    "imageUrl": "https://images.unsplash.com/photo-1460881680858-30d872d5b530?q=80&w=400",
+    "duration": "6:02",
+    "createdAt": "2026-06-19T04:47:23.946Z",
+    "updatedAt": "2026-06-19T04:47:23.946Z"
+  }
+]

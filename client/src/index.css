@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-zinc-950 text-zinc-300 font-sans antialiased overflow-x-hidden selection:bg-purple-500 selection:text-white;
+    background-image: 
+      radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.07) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(251, 191, 36, 0.04) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(139, 92, 246, 0.02) 0px, transparent 60%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white tracking-tight;
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-glow-purple {
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+  }
+  
+  .text-glow-gold {
+    text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 40px -5px rgba(139, 92, 246, 0.2);
+  }
+  
+  .glow-gold {
+    box-shadow: 0 0 40px -5px rgba(251, 191, 36, 0.15);
+  }
+
+  .border-glow-purple {
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 0 15px -3px rgba(139, 92, 246, 0.3);
+  }
+
+  .border-glow-gold {
+    border-color: rgba(251, 191, 36, 0.4);
+    box-shadow: 0 0 15px -3px rgba(251, 191, 36, 0.2);
+  }
+  
+  .glassmorphism {
+    background: rgba(24, 24, 27, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f1f23;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6;
+}
+
+/* Custom scroll smooth */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide default audio player styling controls when visualizer is running */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
