@@ -39,8 +39,8 @@ const createInquiry = async (req, res) => {
       platform: userPlatform,
     });
 
-    // Send email alert to admin
-    await sendInquiryEmail({
+    // Send email alert to admin in the background (do not block the client response)
+    sendInquiryEmail({
       name,
       email,
       phone,
@@ -49,7 +49,7 @@ const createInquiry = async (req, res) => {
       timeline,
       description,
       platform: userPlatform,
-    });
+    }).catch((err) => console.error('Background Mailer Error:', err));
 
     return res.status(201).json({
       success: true,
