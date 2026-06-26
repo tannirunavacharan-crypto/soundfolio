@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
+const fs = require('fs');
 const connectDB = require('./config/db');
 
 // Connect to Database
@@ -28,16 +29,31 @@ app.use('/api/inquiries', require('./routes/inquiryRoutes'));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../client/dist')));
+  const clientDistPath = path.join(__dirname, '../client/dist');
+  const indexHtmlPath = path.resolve(clientDistPath, 'index.html');
+  
+  if (fs.existsSync(indexHtmlPath)) {
+    app.use(express.static(clientDistPath));
 
-  // For any non-API routes, serve client build index.html
-  app.get('*', (req, res) => {
-    if (!req.path.startsWith('/api/')) {
-      res.sendFile(path.resolve(__dirname, '../', 'client', 'dist', 'index.html'));
-    } else {
-      res.status(404).json({ success: false, message: 'API endpoint not found' });
-    }
-  });
+    // For any non-API routes, serve client build index.html
+    app.get('*', (req, res) => {
+      if (!req.path.startsWith('/api/')) {
+        res.sendFile(indexHtmlPath);
+      } else {
+        res.status(404).json({ success: false, message: 'API endpoint not found' });
+      }
+    });
+  } else {
+    // If client build is not found (e.g. deployed backend only on Render), serve API status for root "/"
+    app.get('/', (req, res) => {
+      res.json({ status: 'healthy', message: 'SoundFolio API is running' });
+    });
+
+    // 404 Route handler for other routes
+    app.use((req, res, next) => {
+      res.status(404).json({ success: false, message: 'Resource not found' });
+    });
+  }
 } else {
   // Health check endpoint
   app.get('/', (req, res) => {
