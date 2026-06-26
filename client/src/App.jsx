@@ -30,7 +30,7 @@ function App() {
     <ThemeProvider>
       <AuthProvider>
         <AudioProvider>
-          <Router>
+          <Router basename={import.meta.env.BASE_URL}>
             <div className="min-h-screen flex flex-col bg-zinc-950 text-zinc-300 font-sans selection:bg-purple-500 selection:text-white relative transition-colors duration-300">
               {/* Header Navigation */}
               <Navbar />
