@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Mail, Lock, AlertTriangle, KeyRound, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -236,17 +236,17 @@ const Login = () => {
           <div className="text-center space-y-4">
             <div className="text-xs text-zinc-500">
               Don't have an account?{' '}
-              <a href="/register" className="text-purple-650 dark:text-purple-450 hover:text-purple-500 font-semibold hover:underline">
+              <Link to="/register" className="text-purple-650 dark:text-purple-450 hover:text-purple-500 font-semibold hover:underline">
                 Register as Client
-              </a>
+              </Link>
             </div>
             <div>
-              <a
-                href="/"
+              <Link
+                to="/"
                 className="text-xs text-zinc-500 hover:text-zinc-400 transition-colors uppercase tracking-widest font-mono block"
               >
                 ← Return to Portfolio Website
-              </a>
+              </Link>
             </div>
           </div>
           

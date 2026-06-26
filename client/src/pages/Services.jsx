@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../utils/api';
+import { Link } from 'react-router-dom';
 import ServiceCard from '../components/ServiceCard';
 import { Settings, ShieldCheck, MailQuestion } from 'lucide-react';
 
@@ -81,12 +82,12 @@ const Services = () => {
           <p className="text-xs text-zinc-500">
             Custom podcast packaging, sound design loops, or theatrical scoring are quoted on demand.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block text-xs font-bold text-purple-400 hover:text-purple-300 transition-colors uppercase tracking-wider"
           >
             Ask a Question →
-          </a>
+          </Link>
         </div>
       </section>
 

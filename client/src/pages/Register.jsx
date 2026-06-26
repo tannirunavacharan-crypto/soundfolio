@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Mail, Lock, User, AlertTriangle, PlayCircle, KeyRound } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import API from '../utils/api';
@@ -206,17 +206,17 @@ const Register = () => {
         <div className="text-center space-y-4">
           <div className="text-xs text-zinc-500">
             Already have a client account?{' '}
-            <a href="/login" className="text-purple-450 hover:text-purple-400 font-semibold hover:underline">
+            <Link to="/login" className="text-purple-450 hover:text-purple-400 font-semibold hover:underline">
               Log In
-            </a>
+            </Link>
           </div>
           <div>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="text-xs text-zinc-500 hover:text-zinc-400 transition-colors uppercase tracking-widest font-mono block"
             >
               ← Return to Portfolio Website
-            </a>
+            </Link>
           </div>
         </div>
 

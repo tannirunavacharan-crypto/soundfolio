@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Shield, Mail, Lock, AlertTriangle, KeyRound, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -229,12 +229,12 @@ const AdminLogin = () => {
 
           {/* Back Link */}
           <div className="text-center">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="text-xs text-zinc-500 hover:text-zinc-400 transition-colors uppercase tracking-widest font-mono block"
             >
               ← Return to Portfolio Website
-            </a>
+            </Link>
           </div>
 
         </div>
