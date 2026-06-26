@@ -7,5 +7,14 @@
     "role": "admin",
     "createdAt": "2026-06-19T04:47:23.902Z",
     "updatedAt": "2026-06-19T04:47:23.903Z"
+  },
+  {
+    "_id": "1782307111315ysrd",
+    "name": "Standard Client Test",
+    "email": "client_test@soundfolio.com",
+    "password": "$2a$10$GVBGlWZ8HR0rx32BZeqdD.Z4titWNrlUA7JAvxvPsvjKxo.VYDLvO",
+    "role": "user",
+    "createdAt": "2026-06-24T13:18:31.315Z",
+    "updatedAt": "2026-06-24T13:18:31.316Z"
   }
 ]

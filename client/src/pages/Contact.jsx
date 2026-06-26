@@ -69,7 +69,23 @@ const Contact = () => {
     setSubmitting(true);
     setErrorMessage('');
     try {
-      const response = await API.post('/inquiries', formData);
+      // Detect the user's platform/OS
+      const getPlatform = () => {
+        const ua = navigator.userAgent;
+        if (/windows/i.test(ua)) return 'Windows';
+        if (/macintosh|mac os x/i.test(ua)) return 'macOS';
+        if (/linux/i.test(ua)) return 'Linux';
+        if (/android/i.test(ua)) return 'Android';
+        if (/iphone|ipad|ipod/i.test(ua)) return 'iOS';
+        return 'Other/Unknown';
+      };
+
+      const payload = {
+        ...formData,
+        platform: getPlatform(),
+      };
+
+      const response = await API.post('/inquiries', payload);
       if (response.data.success) {
         setSuccess(true);
         // Clear form
@@ -121,7 +137,7 @@ const Contact = () => {
       {/* Header */}
       <div className="text-center space-y-3">
         <span className="text-xs font-mono uppercase tracking-widest text-purple-500 font-bold">// INQUIRIES</span>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-white">Start a Collaboration</h1>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-white">Project Inquiry</h1>
         <p className="text-zinc-500 text-sm max-w-lg mx-auto">
           Fill out the project brief form below. Ak Bhuker will review details and follow up with a custom proposal.
         </p>

@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 
 const sendInquiryEmail = async (inquiryData) => {
-  const { name, email, phone, projectType, budget, timeline, description } = inquiryData;
+  const { name, email, phone, projectType, budget, timeline, description, platform } = inquiryData;
 
   const adminEmail = process.env.ADMIN_EMAIL || 'composer.akbhuker@example.com';
   const senderEmail = process.env.SENDER_EMAIL || 'inquiries@soundfolio.com';
@@ -38,6 +38,10 @@ const sendInquiryEmail = async (inquiryData) => {
       <tr>
         <td><strong>Timeline</strong></td>
         <td>${timeline || 'Not provided'}</td>
+      </tr>
+      <tr>
+        <td><strong>User Platform</strong></td>
+        <td>${platform || 'Unknown'}</td>
       </tr>
       <tr>
         <td><strong>Description</strong></td>
@@ -96,6 +100,7 @@ const sendInquiryEmail = async (inquiryData) => {
     console.log(`  Project: ${projectType}`);
     console.log(`  Budget: ${budget}`);
     console.log(`  Timeline: ${timeline}`);
+    console.log(`  Platform: ${platform || 'Unknown'}`);
     console.log(`  Description: ${description}`);
     console.log('==================================================\n');
     return { success: true, mode: 'development-log' };

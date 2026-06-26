@@ -409,7 +409,7 @@ const AdminDashboard = () => {
                         </button>
                       </div>
                       
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-zinc-900/40 rounded-xl border border-zinc-800/50 text-xs">
+                      <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-4 bg-zinc-900/40 rounded-xl border border-zinc-800/50 text-xs">
                         <div>
                           <span className="text-zinc-500 block uppercase font-mono">Project Type</span>
                           <span className="text-zinc-300 font-semibold">{inq.projectType}</span>
@@ -421,6 +421,10 @@ const AdminDashboard = () => {
                         <div>
                           <span className="text-zinc-500 block uppercase font-mono">Timeline</span>
                           <span className="text-zinc-300 font-semibold">{inq.timeline || 'Not specified'}</span>
+                        </div>
+                        <div>
+                          <span className="text-zinc-500 block uppercase font-mono">Platform</span>
+                          <span className="text-zinc-300 font-semibold">{inq.platform || 'Unknown'}</span>
                         </div>
                         <div>
                           <span className="text-zinc-500 block uppercase font-mono">Received</span>

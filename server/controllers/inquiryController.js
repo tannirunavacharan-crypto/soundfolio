@@ -6,11 +6,25 @@ const { sendInquiryEmail } = require('../utils/mailer');
 // @access  Public
 const createInquiry = async (req, res) => {
   try {
-    const { name, email, phone, projectType, budget, timeline, description } = req.body;
+    const { name, email, phone, projectType, budget, timeline, description, platform } = req.body;
 
     // Simple validation
     if (!name || !email || !projectType || !description) {
       return res.status(400).json({ success: false, message: 'Please provide all required fields (name, email, projectType, description)' });
+    }
+
+    // Determine platform (fallback to request headers if not provided by frontend)
+    let userPlatform = platform;
+    if (!userPlatform && req.headers['user-agent']) {
+      const ua = req.headers['user-agent'];
+      if (/windows/i.test(ua)) userPlatform = 'Windows';
+      else if (/macintosh|mac os x/i.test(ua)) userPlatform = 'macOS';
+      else if (/linux/i.test(ua)) userPlatform = 'Linux';
+      else if (/android/i.test(ua)) userPlatform = 'Android';
+      else if (/iphone|ipad|ipod/i.test(ua)) userPlatform = 'iOS';
+      else userPlatform = 'Unknown/Other';
+    } else if (!userPlatform) {
+      userPlatform = 'Unknown';
     }
 
     // Save inquiry to MongoDB
@@ -22,6 +36,7 @@ const createInquiry = async (req, res) => {
       budget,
       timeline,
       description,
+      platform: userPlatform,
     });
 
     // Send email alert to admin
@@ -33,6 +48,7 @@ const createInquiry = async (req, res) => {
       budget,
       timeline,
       description,
+      platform: userPlatform,
     });
 
     return res.status(201).json({

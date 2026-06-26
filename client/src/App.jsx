@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Providers
 import { AuthProvider } from './context/AuthContext';
 import { AudioProvider } from './context/AudioContext';
+import { ThemeProvider } from './context/ThemeContext';
 
 // Components
 import Navbar from './components/Navbar';
@@ -20,48 +21,110 @@ import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Login from './pages/Login';
 import AdminDashboard from './pages/AdminDashboard';
+import Register from './pages/Register';
+import UserDashboard from './pages/UserDashboard';
+import AdminLogin from './pages/AdminLogin';
 
 function App() {
   return (
-    <AuthProvider>
-      <AudioProvider>
-        <Router>
-          <div className="min-h-screen flex flex-col bg-zinc-950 text-zinc-300 font-sans selection:bg-purple-500 selection:text-white relative">
-            {/* Header Navigation */}
-            <Navbar />
+    <ThemeProvider>
+      <AuthProvider>
+        <AudioProvider>
+          <Router>
+            <div className="min-h-screen flex flex-col bg-zinc-950 text-zinc-300 font-sans selection:bg-purple-500 selection:text-white relative transition-colors duration-300">
+              {/* Header Navigation */}
+              <Navbar />
 
-            {/* Main Content Area */}
-            <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/portfolio" element={<Portfolio />} />
-                <Route path="/services" element={<Services />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/login" element={<Login />} />
-                
-                {/* Protected Admin Console Route */}
-                <Route 
-                  path="/admin" 
-                  element={
-                    <ProtectedRoute>
-                      <AdminDashboard />
-                    </ProtectedRoute>
-                  } 
-                />
-              </Routes>
-            </main>
+              {/* Main Content Area */}
+              <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <Routes>
+                  {/* Public Authentication Routes */}
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/admin-login" element={<AdminLogin />} />
+                  <Route path="/register" element={<Register />} />
+                  
+                  {/* Protected Main Pages (requires login) */}
+                  <Route 
+                    path="/" 
+                    element={
+                      <ProtectedRoute allowedRoles={['admin', 'user']}>
+                        <Home />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/about" 
+                    element={
+                      <ProtectedRoute allowedRoles={['admin', 'user']}>
+                        <About />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/portfolio" 
+                    element={
+                      <ProtectedRoute allowedRoles={['admin', 'user']}>
+                        <Portfolio />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/services" 
+                    element={
+                      <ProtectedRoute allowedRoles={['admin', 'user']}>
+                        <Services />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/projects" 
+                    element={
+                      <ProtectedRoute allowedRoles={['admin', 'user']}>
+                        <Projects />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  <Route 
+                    path="/contact" 
+                    element={
+                      <ProtectedRoute allowedRoles={['admin', 'user']}>
+                        <Contact />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  
+                  {/* Protected Admin Console Route */}
+                  <Route 
+                    path="/admin" 
+                    element={
+                      <ProtectedRoute allowedRoles={['admin']}>
+                        <AdminDashboard />
+                      </ProtectedRoute>
+                    } 
+                  />
 
-            {/* Sticky Persistent Audio Player */}
-            <AudioPlayer />
+                  {/* Protected Client Dashboard Route */}
+                  <Route 
+                    path="/dashboard" 
+                    element={
+                      <ProtectedRoute allowedRoles={['admin', 'user']}>
+                        <UserDashboard />
+                      </ProtectedRoute>
+                    } 
+                  />
+                </Routes>
+              </main>
 
-            {/* Footer Contact and Social */}
-            <Footer />
-          </div>
-        </Router>
-      </AudioProvider>
-    </AuthProvider>
+              {/* Sticky Persistent Audio Player */}
+              <AudioPlayer />
+
+              {/* Footer Contact and Social */}
+              <Footer />
+            </div>
+          </Router>
+        </AudioProvider>
+      </AuthProvider>
+    </ThemeProvider>
   );
 }
 

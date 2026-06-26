@@ -39,6 +39,11 @@ const inquirySchema = new mongoose.Schema(
       required: [true, 'Please provide project details'],
       trim: true,
     },
+    platform: {
+      type: String,
+      trim: true,
+      default: 'Unknown',
+    },
   },
   {
     timestamps: true,

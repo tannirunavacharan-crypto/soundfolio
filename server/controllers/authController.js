@@ -27,9 +27,9 @@ const login = async (req, res) => {
       return res.status(401).json({ success: false, message: 'Invalid credentials' });
     }
 
-    // Verify role is admin
-    if (user.role !== 'admin') {
-      return res.status(403).json({ success: false, message: 'Access denied: Admin only' });
+    // Verify role is admin or user
+    if (user.role !== 'admin' && user.role !== 'user') {
+      return res.status(403).json({ success: false, message: 'Access denied' });
     }
 
     // Match password
@@ -72,7 +72,49 @@ const getMe = async (req, res) => {
   }
 };
 
+// @desc    Register a new client user
+// @route   POST /api/auth/register
+// @access  Public
+const register = async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    if (!name || !email || !password) {
+      return res.status(400).json({ success: false, message: 'Please provide all fields (name, email, password)' });
+    }
+
+    // Check if user exists
+    const userExists = await User.findOne({ email });
+    if (userExists) {
+      return res.status(400).json({ success: false, message: 'User already exists' });
+    }
+
+    // Create user (role defaults to 'user')
+    const user = await User.create({
+      name,
+      email,
+      password,
+      role: 'user',
+    });
+
+    return res.status(201).json({
+      success: true,
+      token: generateToken(user._id),
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (error) {
+    console.error('Register Error:', error);
+    return res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
+
 module.exports = {
   login,
   getMe,
+  register,
 };
