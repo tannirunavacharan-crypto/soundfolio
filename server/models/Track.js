@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const JsonModel = require('../utils/jsonDb');
+const FirebaseModel = require('../utils/firebaseDb');
 
 // 1. Define Mongoose Schema
 const trackSchema = new mongoose.Schema(
@@ -52,10 +53,15 @@ try {
 // 2. Instantiate JSON Model
 const JsonTrackModel = new JsonModel('Track');
 
-// 3. Dynamic Export proxy
+// 3. Instantiate Firebase Model
+const FirebaseTrackModel = new FirebaseModel('Track');
+
+// 4. Dynamic Export proxy
 const trackProxy = new Proxy({}, {
   get: (target, prop) => {
-    const activeModel = global.dbMode === 'mongodb' ? MongooseTrackModel : JsonTrackModel;
+    const activeModel = 
+      global.dbMode === 'firebase' ? FirebaseTrackModel :
+      global.dbMode === 'mongodb' ? MongooseTrackModel : JsonTrackModel;
     return activeModel[prop];
   }
 });

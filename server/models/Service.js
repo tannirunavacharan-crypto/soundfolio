@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const JsonModel = require('../utils/jsonDb');
+const FirebaseModel = require('../utils/firebaseDb');
 
 // 1. Define Mongoose Schema
 const serviceSchema = new mongoose.Schema(
@@ -36,10 +37,15 @@ try {
 // 2. Instantiate JSON Model
 const JsonServiceModel = new JsonModel('Service');
 
-// 3. Dynamic Export proxy
+// 3. Instantiate Firebase Model
+const FirebaseServiceModel = new FirebaseModel('Service');
+
+// 4. Dynamic Export proxy
 const serviceProxy = new Proxy({}, {
   get: (target, prop) => {
-    const activeModel = global.dbMode === 'mongodb' ? MongooseServiceModel : JsonServiceModel;
+    const activeModel = 
+      global.dbMode === 'firebase' ? FirebaseServiceModel :
+      global.dbMode === 'mongodb' ? MongooseServiceModel : JsonServiceModel;
     return activeModel[prop];
   }
 });

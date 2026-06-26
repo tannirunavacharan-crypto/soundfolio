@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const JsonModel = require('../utils/jsonDb');
+const FirebaseModel = require('../utils/firebaseDb');
 
 // 1. Define Mongoose Schema
 const projectSchema = new mongoose.Schema(
@@ -44,10 +45,15 @@ try {
 // 2. Instantiate JSON Model
 const JsonProjectModel = new JsonModel('Project');
 
-// 3. Dynamic Export proxy
+// 3. Instantiate Firebase Model
+const FirebaseProjectModel = new FirebaseModel('Project');
+
+// 4. Dynamic Export proxy
 const projectProxy = new Proxy({}, {
   get: (target, prop) => {
-    const activeModel = global.dbMode === 'mongodb' ? MongooseProjectModel : JsonProjectModel;
+    const activeModel = 
+      global.dbMode === 'firebase' ? FirebaseProjectModel :
+      global.dbMode === 'mongodb' ? MongooseProjectModel : JsonProjectModel;
     return activeModel[prop];
   }
 });

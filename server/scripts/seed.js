@@ -1,4 +1,5 @@
 require('dotenv').config();
+const connectDB = require('../config/db');
 const User = require('../models/User');
 const Track = require('../models/Track');
 const Service = require('../models/Service');
@@ -8,7 +9,8 @@ const Inquiry = require('../models/Inquiry');
 
 const seedData = async () => {
   try {
-    console.log('JSON database files preparing for seeding...');
+    await connectDB();
+    console.log(`Database connected in mode: ${global.dbMode}. Preparing for seeding...`);
 
     // Clear existing collections
     await User.deleteMany();

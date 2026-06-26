@@ -1,20 +1,11 @@
 [
   {
-    "_id": "17818444439020zid",
+    "_id": "1782487220258pm3p",
     "name": "Ak Bhuker",
     "email": "admin@soundfolio.com",
-    "password": "$2a$10$kOI0qDdrhU5S3CbjIqhv8O4uBpXTT7rFQmTzqs6c/P7DaU9yxJQpi",
+    "password": "$2a$10$EWZc2KnLXkOzdfTLrQt0au6bF9OWYamJtGB5mWK1g5j4e51gfRMae",
     "role": "admin",
-    "createdAt": "2026-06-19T04:47:23.902Z",
-    "updatedAt": "2026-06-19T04:47:23.903Z"
-  },
-  {
-    "_id": "1782307111315ysrd",
-    "name": "Standard Client Test",
-    "email": "client_test@soundfolio.com",
-    "password": "$2a$10$GVBGlWZ8HR0rx32BZeqdD.Z4titWNrlUA7JAvxvPsvjKxo.VYDLvO",
-    "role": "user",
-    "createdAt": "2026-06-24T13:18:31.315Z",
-    "updatedAt": "2026-06-24T13:18:31.316Z"
+    "createdAt": "2026-06-26T15:20:20.258Z",
+    "updatedAt": "2026-06-26T15:20:20.259Z"
   }
 ]

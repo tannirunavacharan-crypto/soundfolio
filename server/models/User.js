@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const JsonModel = require('../utils/jsonDb');
+const FirebaseModel = require('../utils/firebaseDb');
 
 // 1. Define Mongoose Schema
 const userSchema = new mongoose.Schema(
@@ -59,10 +60,15 @@ try {
 // 2. Instantiate JSON Model
 const JsonUserModel = new JsonModel('User');
 
-// 3. Dynamic Export proxy
+// 3. Instantiate Firebase Model
+const FirebaseUserModel = new FirebaseModel('User');
+
+// 4. Dynamic Export proxy
 const userProxy = new Proxy({}, {
   get: (target, prop) => {
-    const activeModel = global.dbMode === 'mongodb' ? MongooseUserModel : JsonUserModel;
+    const activeModel = 
+      global.dbMode === 'firebase' ? FirebaseUserModel :
+      global.dbMode === 'mongodb' ? MongooseUserModel : JsonUserModel;
     return activeModel[prop];
   }
 });
