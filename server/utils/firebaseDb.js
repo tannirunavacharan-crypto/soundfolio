@@ -33,6 +33,19 @@ class FirebaseModel {
     return instance;
   }
 
+  _sanitize(obj) {
+    if (obj === null || typeof obj !== 'object') return obj;
+    if (Array.isArray(obj)) return obj.map(item => this._sanitize(item));
+    
+    const cleaned = {};
+    for (const key of Object.keys(obj)) {
+      if (obj[key] !== undefined) {
+        cleaned[key] = this._sanitize(obj[key]);
+      }
+    }
+    return cleaned;
+  }
+
   // CREATE
   async create(data) {
     const collectionRef = this.db.collection(this.collectionName);
@@ -46,12 +59,12 @@ class FirebaseModel {
 
       const docRef = collectionRef.doc();
       const id = docRef.id;
-      const docData = {
+      const docData = this._sanitize({
         _id: id,
         ...finalData,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
-      };
+      });
 
       await docRef.set(docData);
       return docData;
@@ -198,11 +211,11 @@ class FirebaseModel {
       finalUpdate.password = await bcrypt.hash(finalUpdate.password, salt);
     }
 
-    const updatedDoc = {
+    const updatedDoc = this._sanitize({
       ...doc.data(),
       ...finalUpdate,
       updatedAt: new Date().toISOString(),
-    };
+    });
 
     await docRef.set(updatedDoc);
     return this._wrapDoc(updatedDoc);
